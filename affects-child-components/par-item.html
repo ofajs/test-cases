@@ -41,12 +41,12 @@
       proto: {
         toggleSub() {
           // Modify the status of child nodes
-          // this.forEach((item) => {
-          //   if (item.tag === "sub-item") {
-          //     // change subcomponent state
-          //     item.hide = !item.hide;
-          //   }
-          // });
+          this.forEach((item) => {
+            if (item.tag === "sub-item") {
+              // change subcomponent state
+              item.hide = !item.hide;
+            }
+          });
           // Modify all child nodes (including multi-level child nodes)
           // this.all("sub-item").forEach((item) => {
           //   item.hide = !item.hide;
