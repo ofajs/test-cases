@@ -33,18 +33,23 @@
   </inject-host>
   <div class="parent-main">
     <slot> </slot>
-    <button on:click="toggleSub">toggle-sub</button>
+    <button on:click="toggleSub">{{showall ? 'Show All' : 'Hide All'}}</button>
   </div>
   <script>
     export default {
       tag: "par-item",
+      data: {
+        showall: false,
+      },
       proto: {
         toggleSub() {
+          this.showall = !this.showall;
+
           // Modify the status of child nodes
           this.forEach((item) => {
             if (item.tag === "sub-item") {
               // change subcomponent state
-              item.hide = !item.hide;
+              item.hide = this.showall;
             }
           });
           // Modify all child nodes (including multi-level child nodes)

@@ -5,7 +5,9 @@
       margin-left: 15px;
     }
     .sub-main {
-      height: 20px;
+      display: flex;
+      align-items: center;
+      height: 30px;
       color: blue;
       overflow: hidden;
       transition: all ease 0.3s;
@@ -15,15 +17,32 @@
       height: 0px;
       opacity: 0;
     }
+
+    button {
+      margin-left: 16px;
+    }
   </style>
   <div class="sub-main" class:hide-item="hide">
     <slot> </slot>
+    <button on:click="togglePrev">toggle prev item</button>
+    <button on:click="next && (next.hide = !next.hide)">
+      <!-- Modify the hide staet of the next element -->
+      toggle next item
+    </button>
   </div>
   <script>
     export default {
       tag: "sub-item",
       data: {
         hide: false,
+      },
+      proto: {
+        togglePrev() {
+          // Modify the hide value of the prev element
+          if (this.prev) {
+            this.prev.hide = !this.prev.hide;
+          }
+        },
       },
     };
   </script>
