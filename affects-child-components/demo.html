@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>affects-child-components demo</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/kirakiray/ofa.js@4.4.5/dist/ofa.min.js"
+      debug
+    ></script>
+  </head>
+  <body>
+    <l-m src="./par-item.html"></l-m>
+    <l-m src="./sub-item.html"></l-m>
+    <par-item style="width: 300px; border: green solid 1px">
+      I am Parent1
+      <sub-item>I am sub1</sub-item>
+      <sub-item>I am sub2 </sub-item>
+      <sub-item>I am sub3</sub-item>
+    </par-item>
+    <par-item style="width: 300px; border: blue solid 1px">
+      I am Parent2
+      <sub-item>I am sub1</sub-item>
+      <sub-item>I am sub2 </sub-item>
+      <sub-item>I am <span special-green>sub3</span></sub-item>
+      <sub-item>I am sub4</sub-item>
+    </par-item>
+  </body>
+</html>

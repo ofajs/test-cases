@@ -1,0 +1,58 @@
+<template component>
+  <style>
+    :host {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .parent-main {
+      position: relative;
+      color: red;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    ::slotted(sub-item) {
+      /* Affects the styles of child sub-item components */
+      font-size: 14px;
+      font-weight: normal;
+    }
+  </style>
+  <inject-host>
+    <style>
+      par-item sub-item [special-green] {
+        /* ::slotted cannot affect multi-level elements styles, so you can use inject-host instead. */
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </inject-host>
+  <div class="parent-main">
+    <slot> </slot>
+    <button on:click="toggleSub">toggle-sub</button>
+  </div>
+  <script>
+    export default {
+      tag: "par-item",
+      proto: {
+        toggleSub() {
+          // Modify the status of child nodes
+          // this.forEach((item) => {
+          //   if (item.tag === "sub-item") {
+          //     // change subcomponent state
+          //     item.hide = !item.hide;
+          //   }
+          // });
+          // Modify all child nodes (including multi-level child nodes)
+          // this.all("sub-item").forEach((item) => {
+          //   item.hide = !item.hide;
+          // });
+        },
+      },
+    };
+  </script>
+</template>

@@ -1,0 +1,30 @@
+<template component>
+  <style>
+    :host {
+      display: block;
+      margin-left: 15px;
+    }
+    .sub-main {
+      height: 20px;
+      color: blue;
+      overflow: hidden;
+      transition: all ease 0.3s;
+    }
+
+    .sub-main.hide-item {
+      height: 0px;
+      opacity: 0;
+    }
+  </style>
+  <div class="sub-main" class:hide-item="hide">
+    <slot> </slot>
+  </div>
+  <script>
+    export default {
+      tag: "sub-item",
+      data: {
+        hide: false,
+      },
+    };
+  </script>
+</template>
